@@ -1,5 +1,5 @@
 import React from "react";
-import { api } from "../utils/Api.js";
+import { api } from "../utils/api.js";
 import Card from "./Card.js";
 
 function Main(props) {
@@ -19,7 +19,7 @@ function Main(props) {
       .catch((err) => {
         console.log(err);
       });
-  });
+  },[]);
   React.useEffect(() => {
     api
       .getInitialCards()
@@ -29,7 +29,7 @@ function Main(props) {
       .catch((err) => {
         console.log(err);
       });
-  });
+  },[]);
 
   return (
     <main className="main-content">
@@ -63,7 +63,7 @@ function Main(props) {
       <section className="places">
         {cards.map((card) => {
           return (
-            <Card card={card} onCardClick={props.onCardClick}/>
+            <Card key={card._id} card={card} onCardClick={props.onCardClick}/>
           );
         })}
       </section>

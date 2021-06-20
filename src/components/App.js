@@ -51,80 +51,78 @@ function App() {
       <PopupWithForm
         name="avatar"
         title="Обновить аватар"
-        children={
-          <div className="popup__form-field">
-            <input
-              className="popup__input popup__input_url"
-              id="avatar-url"
-              type="url"
-              name="avatar"
-              placeholder="Ссылка на картинку"
-              required
-            />
-            <span className="popup__error" id="avatar-url-error"></span>
-          </div>
-        }
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
-      />
+        buttonText="Сохранить"
+      >
+        <div className="popup__form-field">
+          <input
+            className="popup__input popup__input_url"
+            id="avatar-url"
+            type="url"
+            name="avatar"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span className="popup__error" id="avatar-url-error"></span>
+        </div>
+      </PopupWithForm>
 
       <PopupWithForm
         name="avatar"
         title="Обновить аватар"
-        children={
-          <div className="popup__form-field">
-            <input
-              className="popup__input popup__input_url"
-              id="avatar-url"
-              type="url"
-              name="avatar"
-              placeholder="Ссылка на картинку"
-              required
-            />
-            <span className="popup__error" id="avatar-url-error"></span>
-          </div>
-        }
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
-      />
+        buttonText="Сохранить"
+      >
+        <div className="popup__form-field">
+          <input
+            className="popup__input popup__input_url"
+            id="avatar-url"
+            type="url"
+            name="avatar"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span className="popup__error" id="avatar-url-error"></span>
+        </div>
+      </PopupWithForm>
 
       <PopupWithForm
         name="add-place"
         title="Новое место"
-        children={
-          <>
-            <div className="popup__form-field">
-              <input
-                className="popup__input popup__input_name"
-                id="place-name"
-                type="text"
-                name="name"
-                placeholder="Название"
-                required
-                minlength="2"
-                maxlength="30"
-              />
-              <span className="popup__error" id="place-name-error">
-                Ошибка
-              </span>
-            </div>
-            <div className="popup__form-field">
-              <input
-                className="popup__input popup__input_url"
-                id="place-url"
-                type="url"
-                name="link"
-                placeholder="Ссылка на картинку"
-                required
-              />
-              <span className="popup__error" id="place-url-error"></span>
-            </div>
-          </>
-        }
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
-      />
-      <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
+        buttonText="Сохранить"
+      >
+        <div className="popup__form-field">
+          <input
+            className="popup__input popup__input_name"
+            id="place-name"
+            type="text"
+            name="name"
+            placeholder="Название"
+            required
+            minLength="2"
+            maxLength="30"
+          />
+          <span className="popup__error" id="place-name-error">
+            Ошибка
+          </span>
+        </div>
+        <div className="popup__form-field">
+          <input
+            className="popup__input popup__input_url"
+            id="place-url"
+            type="url"
+            name="link"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span className="popup__error" id="place-url-error"></span>
+        </div>
+      </PopupWithForm>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
     </div>
   );
 }

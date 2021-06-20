@@ -8,11 +8,10 @@ function PopupWithForm(props) {
             className="popup__form"
             method="POST"
             name={props.name}
-            novalidate
           >
           {props.children}
             <button className="popup__submit-btn" type="submit">
-              Сохранить
+              {props.buttonText}
             </button>
           </form>
         </div>
