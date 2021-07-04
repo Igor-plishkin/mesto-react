@@ -2,15 +2,23 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup(props) {
-  const nameRef = React.createRef();
-  const linkRef = React.createRef();
+  const [name, setName] = React.useState("");
+  const [link, setLink] = React.useState("");
+
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleLinkChange(e) {
+    setLink(e.target.value);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
 
     props.onAddPlace({
-      name: nameRef.current.value,
-      link: linkRef.current.value,
+      name: name,
+      link: link,
     });
   }
 
@@ -33,7 +41,8 @@ function AddPlacePopup(props) {
           required
           minLength="2"
           maxLength="30"
-          ref={nameRef}
+          onChange={handleNameChange}
+          value={name}
         />
         <span className="popup__error" id="place-name-error">
           Ошибка
@@ -47,7 +56,8 @@ function AddPlacePopup(props) {
           name="link"
           placeholder="Ссылка на картинку"
           required
-          ref={linkRef}
+          onChange={handleLinkChange}
+          value={link}
         />
         <span className="popup__error" id="place-url-error"></span>
       </div>

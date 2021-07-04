@@ -6,7 +6,6 @@ function PopupWithForm(props) {
           <button className="popup__close-btn" type="reset" onClick={props.onClose}></button>
           <form
             className="popup__form"
-            method="POST"
             name={props.name}
             onSubmit={props.onSubmit}
           >

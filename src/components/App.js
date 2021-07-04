@@ -3,7 +3,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import ImagePopup from "./ImagePopup";
-import { api } from "../utils/api.js";
+import api from "../utils/api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
@@ -23,20 +23,9 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    api
-      .getUser()
-      .then((userData) => {
+    Promise.all([api.getUser(), api.getInitialCards()])
+      .then(([userData, initialCards]) => {
         setCurrentUser(userData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((initialCards) => {
         setCards(initialCards);
       })
       .catch((err) => {
@@ -110,7 +99,7 @@ function App() {
     api
       .deleteCard(card._id)
       .then(() => {
-        setCards((state) => state.filter((c) => c !== card));
+        setCards((state) => state.filter((c) => c._id !== card._id));
       })
       .catch((err) => {
         console.log(err);
