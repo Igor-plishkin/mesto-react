@@ -90,4 +90,6 @@ class Api {
   }
 }
 
-export const api = new Api("4756f29e-7074-4b91-8a7b-c92b73652806", "cohort-24");
+const api = new Api("4756f29e-7074-4b91-8a7b-c92b73652806", "cohort-24");
+
+export default api;
