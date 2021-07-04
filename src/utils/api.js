@@ -72,24 +72,14 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  putLikeToCard(id) {
+  changeLikeCardStatus(id, isLiked) {
     return fetch(`${this.url + this.groupId}/cards/likes/${id}`, {
-      method: "PUT",
+      method: isLiked ? "PUT" : "DELETE",
       headers: {
         authorization: this.token,
       },
     }).then(this._handleResponse);
   }
-
-  deleteLikeCard(id) {
-    return fetch(`${this.url + this.groupId}/cards/likes/${id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: this.token,
-      },
-    }).then(this._handleResponse);
-  }
-  
   getInitialCards() {
     return fetch(`${this.url + this.groupId}/cards`, {
       method: "GET",
